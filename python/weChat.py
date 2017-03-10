@@ -1,14 +1,15 @@
-# -*- coding: utf-8 -*-
-
 # coding=utf-8
 
-html = '''True'''
+html = '''True
+'''
 
 import socket
 import signal
 import errno
 import re
+import os
 import hashlib
+from time import sleep
 
 wxtoken = 'weixin'
 
@@ -69,7 +70,6 @@ Context-Type: text/html
 Server: Python-slp version 1.0
 Context-Length: '''
 
-#TCP通信协议
 lisfd = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 lisfd.bind((HOST, PORT))
 lisfd.listen(2)
