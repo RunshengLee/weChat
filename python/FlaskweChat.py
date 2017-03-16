@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 app = Flask(__name__)
 app.debug=True
 
-@app.route('/root/weChat/python/',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def wechat_auth():
     if request.method == 'GET':
         token='weixin' #微信配置所需的token
@@ -34,4 +34,4 @@ def wechat_auth():
     return 'Hello weixin!'
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="120.24.6.46",port=80)
