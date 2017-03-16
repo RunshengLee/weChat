@@ -1,5 +1,8 @@
 # coding=utf-8
 
+
+
+
 import socket
 import signal
 import errno
@@ -56,7 +59,7 @@ def sigIntHander(signo, frame):
     lisfd.shutdown(socket.SHUT_RD)
 
 
-strHost = "114.215.82.170"
+strHost = ""
 HOST = strHost  # socket.inet_pton(socket.AF_INET,strHost)
 PORT = 80
 
