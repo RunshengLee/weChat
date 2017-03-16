@@ -1,29 +1,23 @@
 # coding=utf-8
 
-html = '''True'''
-
 import socket
 import signal
 import errno
 import re
+import os
 import hashlib
+from time import sleep
 
 wxtoken = 'weixin'
 
 
 def checksignature(pams):
     global wxtoken
-    #加密签名
     signature = pams['signature']
-    #微信时间戳
     timestamp = pams['timestamp']
-    #随机数
     nonce = pams["nonce"];
-    #连接字符串
     tmparr = [wxtoken, timestamp, nonce]
-    #字典排序
     tmparr.sort()
-    #在每个元素中间加入空格
     tmpstr = ''.join(tmparr)
     tmpstr = hashlib.sha1(tmpstr).hexdigest()
     return tmpstr == signature
@@ -31,7 +25,6 @@ def checksignature(pams):
 
 def checksignatureresponse(pams):
     if checksignature(pams):
-        #随机字符串
         return pams['echostr']
     else:
         return ''
@@ -56,22 +49,21 @@ def HttpResponse(header, data):
 
 
 def sigIntHander(signo, frame):
-    print
-    'get signo# ', signo
+    print 'get signo# ', signo
     global runflag
     runflag = False
     global lisfd
     lisfd.shutdown(socket.SHUT_RD)
 
 
-strHost = "120.24.6.46"
+strHost = "114.215.82.170"
 HOST = strHost  # socket.inet_pton(socket.AF_INET,strHost)
 PORT = 80
 
-httpheader = '''
+httpheader = '''\
 HTTP/1.1 200 OK
 Context-Type: text/html
-Server: Python-slp version 1.0
+Server: <a target="_blank" href="http://www.2cto.com/kf/web/Python/" class="keylink">Python</a>-slp version 1.0
 Context-Length: '''
 
 lisfd = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -86,8 +78,7 @@ while runflag:
         confd, addr = lisfd.accept()
     except socket.error as e:
         if e.errno == errno.EINTR:
-            print
-            'get a except EINTR'
+            print 'get a except EINTR'
         else:
             raise
         continue
@@ -95,17 +86,15 @@ while runflag:
     if runflag == False:
         break;
 
-    print
-    "connect by ", addr
+    print "connect by ", addr
     data = confd.recv(1024)
     if not data:
         break
-    print(data)
+    print
+    data
     confd.send(HttpResponse(httpheader, data))
     confd.close()
 else:
-    print
-    'runflag#', runflag
+    print 'runflag#', runflag
 
-print
-'Done'
+print 'Done'
