@@ -97,8 +97,7 @@ while runflag:
     data = confd.recv(1024)
     if not data:
         break
-    print
-    data
+    print(data)
     confd.send(HttpResponse(httpheader, data))
     confd.close()
 else:
