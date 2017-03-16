@@ -56,7 +56,8 @@ def HttpResponse(header, data):
 
 
 def sigIntHander(signo, frame):
-    print('get signo# ', signo)
+    print
+    'get signo# ', signo
     global runflag
     runflag = False
     global lisfd
@@ -85,7 +86,8 @@ while runflag:
         confd, addr = lisfd.accept()
     except socket.error as e:
         if e.errno == errno.EINTR:
-            print('get a except EINTR')
+            print
+            'get a except EINTR'
         else:
             raise
         continue
@@ -93,7 +95,8 @@ while runflag:
     if runflag == False:
         break;
 
-    print( "connect by ", addr)
+    print
+    "connect by ", addr
     data = confd.recv(1024)
     if not data:
         break
@@ -101,6 +104,8 @@ while runflag:
     confd.send(HttpResponse(httpheader, data))
     confd.close()
 else:
-    print('runflag#', runflag)
+    print
+    'runflag#', runflag
 
-print('Done')
+print
+'Done'
