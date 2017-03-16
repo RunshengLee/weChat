@@ -7,10 +7,10 @@ app = Flask(__name__)
 app.debug = True
 
 
-@app.route('/weixin/', methods=['GET', 'POST'])
+@app.route('/root/weChat/python/', methods=['GET', 'POST'])
 def wechat_auth():
     if request.method == 'GET':
-        token = '****'  # your token
+        token = 'weixin'  # your token
     query = request.args
     signature = query.get('signature', '')
     timestamp = query.get('timestamp', '')
