@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--第一个meta标签表示：强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览；-->
+<!--第二个meta标签是iphone设备中的safari私有meta标签，它表示：允许全屏模式浏览；-->
+<!--第三个meta标签也是iphone的私有标签，它指定的iphone中safari顶端的状态条的样式；-->
+<!--第四个meta标签表示：告诉设备忽略将页面中的数字识别为电话号码。-->
+<!--<meta content=”width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;” name=”viewport” />-->
+<!--<meta content=”yes” name=”apple-mobile-web-app-capable” />-->
+<!--<meta content=”black” name=”apple-mobile-web-app-status-bar-style” />-->
+<!--<meta content=”telephone=no” name=”format-detection” />-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <script src="js/login.js"></script>
+    <title>登录</title>
+</head>
+
+<body>
+<div id="main">
+    <h1>登录</h1>
+    <form method="post">
+        <div class="item-right">
+            <a href="phoneLogin.html">手机验证码登录</a>
+        <input id="un" class="input_all" type="text" required="required" placeholder="用户名" />
+        <br>
+        <input id="psw" class="input_all" type="password" required="required" placeholder="密码"/>
+        <button id="login" class="button_size_large button_color_blue"  type="submit" >登录</button>
+            <a href="register.html">注册</a> <a>|</a><a href="index.html">微信登录</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
